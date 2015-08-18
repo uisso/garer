@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
@@ -10,12 +9,15 @@ import (
 	"github.com/hybridgroup/gobot"
 	"github.com/hybridgroup/gobot/platforms/gpio"
 	"github.com/hybridgroup/gobot/platforms/raspi"
+	"html/template"
 )
 
 var validPath = regexp.MustCompile("^(open|close|status)$")
 
+var templates = template.Must(template.ParseFiles("web/button.html"))
+
 func indexHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "Go home you're drunk! I must open/close the garer gate for you, just send me the command!\n")
+	templates.Execute(w, r)
 }
 
 
@@ -44,23 +46,16 @@ func initGobot() (*gobot.Gobot, httprouter.Handle) {
 
 		log.Printf("Command [%s] accepted.", command)
 
-		json := command
-
 		if (command=="open" || command=="close") {
 			remoteButton.On();
 			time.Sleep(2000 * time.Millisecond)
 			log.Println("[+] Relay going LOW")
 			remoteButton.Off();
 
-
-			remoteButton.On();
-			log.Println("[+] Relay going LOW")
-			remoteButton.Off();
-
 			log.Printf("state: %v",remoteButton.State())
 		}
 
-		fmt.Fprintf(w, "<h1>Command[%s] accepted!</h1>\n", json)
+		templates.Execute(w, r)
 	}
 
 	return _gobot, gobotHandler;
@@ -75,7 +70,7 @@ func main() {
 	router.GET("/garer/v1/cmd/:command", gobotHandler)
 
 
-	log.Printf("Blow will a port:8080")
+	log.Printf("Blown will a port:8080")
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 
