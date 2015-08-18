@@ -1,10 +1,10 @@
 Garer IOT Project
 ==========
-This project made to open/close the my home garage gate from Raspberry Pi. (DY gate remote control)
+ This project was made to open/close the my home garage gate from Raspberry Pi. (DY gate remote control)
 
-I play with docker, html, golang and gobot.
+ I play with docker, html, golang and gobot.
 
-You be patient, this first project in golang :P
+ You be patient, this first project in golang :P
 
 Playing with:
  * **Hypriot**: http://blog.hypriot.com/
