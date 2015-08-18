@@ -33,4 +33,4 @@ docker run -v /root/gopath:/gopath --name goal -t -i hypriot/rpi-golang bash
 
 ### Hardware
 
-<img src="https://raw.githubusercontent.com/uisso/garer/master/doc/hardware.jpg" width="70">
+<img src="https://raw.githubusercontent.com/uisso/garer/master/doc/hardware.jpg" width="200">
