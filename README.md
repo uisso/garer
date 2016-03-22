@@ -18,8 +18,8 @@ Garer IOT Project
 - [Hypriot](http://blog.hypriot.com) (for ops only, soon)
 
 
- * Orientations:
-    * https://github.com/hybridgroup/gobot/tree/master/platforms/raspi
+## Orientations:
+ * https://github.com/hybridgroup/gobot/tree/master/platforms/raspi
     * plug GPIO 7, pin 26
 
  * Install pi-blaster (important)
@@ -41,7 +41,7 @@ make build
 ### Usage
  * put your binary `garer` into your raspberry
  * execute `./garer`
- * browser it: http://<rasp_host>:8080/garer
+ * browser it: http://`rasp_host`:8080/garer
 
 ### Hardware
 
